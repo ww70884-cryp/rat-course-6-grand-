@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rat Mastery: The Complete Course</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      background-color: #3b1f0a;
+      color: #f5e6d0;
+      position: relative;
+      min-height: 100vh;
+    }
+    .bg-rat {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 420px;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+      line-height: 1;
+      user-select: none;
+    }
+    * { position: relative; z-index: 1; }
+    h1 { font-size: 22px; font-weight: 500; margin: 0 0 0.5rem; color: #f5e6d0; }
+    h2 { font-size: 18px; font-weight: 500; margin: 0 0 1rem; color: #f5e6d0; }
+    .subtitle { font-size: 14px; color: #c4956a; margin: 0; }
+    .header { text-align: center; margin-bottom: 2rem; }
+    .emoji-big { font-size: 40px; margin-bottom: 0.5rem; }
+    .tabs { display: flex; gap: 12px; margin-bottom: 2rem; }
+    .tab {
+      flex: 1; padding: 10px; font-size: 14px; font-weight: 500;
+      border-radius: 8px; cursor: pointer;
+      border: 1px solid #7a4a20;
+      background: #4e2a0e; color: #c4956a;
+    }
+    .tab.active {
+      border: 2px solid #d4854a; background: #6b3515; color: #f5e6d0;
+    }
+    .card {
+      border: 1px solid #7a4a20; border-radius: 12px;
+      padding: 1.25rem; margin-bottom: 1rem;
+      background: #4e2a0ecc;
+    }
+    .rat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .rat-card {
+      border: 1px solid #7a4a20; border-radius: 8px;
+      padding: 0.75rem; cursor: pointer;
+      background: #3b1f0a;
+    }
+    .rat-card.selected { border-color: #d4854a; background: #6b3515; }
+    .rat-card p { margin: 0; }
+    .rat-name { font-size: 14px; font-weight: 500; margin: 4px 0 2px !important; color: #f5e6d0; }
+    .rat-latin { font-size: 12px; color: #c4956a; }
+    .rat-info {
+      margin-top: 1rem; background: #3b1f0a; border-radius: 8px;
+      padding: 1rem; font-size: 14px; color: #c4956a; display: none;
+      border: 1px solid #7a4a20;
+    }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+    .metric { background: #3b1f0a; border-radius: 8px; padding: 1rem; text-align: center; border: 1px solid #7a4a20; }
+    .metric-value { font-size: 22px; font-weight: 500; margin: 0; color: #f5e6d0; }
+    .metric-label { font-size: 12px; color: #c4956a; margin: 4px 0 0; }
+    .story { border-left: 2px solid #d4854a; padding-left: 1rem; margin-bottom: 1.25rem; }
+    .story p { font-size: 14px; margin: 0 0 0.75rem; color: #e8cfa8; }
+    .story p:last-child { margin: 0; }
+    .steps-label { font-size: 13px; font-weight: 500; margin: 0 0 0.75rem; color: #f5e6d0; }
+    .step {
+      border: 1px solid #7a4a20; border-radius: 8px;
+      padding: 0.75rem 1rem; margin-bottom: 8px; cursor: pointer;
+      background: #3b1f0a;
+    }
+    .step:hover { border-color: #d4854a; }
+    .step-title { font-size: 14px; font-weight: 500; margin: 0; color: #f5e6d0; }
+    .step-body { font-size: 13px; color: #c4956a; margin-top: 8px; display: none; }
+    .footer-bar { background: #4e2a0e; border-radius: 8px; padding: 0.75rem 1rem; border: 1px solid #7a4a20; }
+    .footer-bar p { font-size: 13px; color: #c4956a; margin: 0; }
+    .link-btn {
+      background: none; border: none; color: #d4854a;
+      font-size: 13px; cursor: pointer; padding: 0; text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-rat">🐀</div>
+
+  <div class="header">
+    <div class="emoji-big">🐀</div>
+    <h1>rat mastery: the complete course</h1>
+    <p class="subtitle">how one guy made $6,000 cold calling sleeping rats</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="btn-m1" onclick="showModule(1)">module 1: types of rats</button>
+    <button class="tab" id="btn-m2" onclick="showModule(2)">module 2: the $6k rat hustle</button>
+  </div>
+
+  <!-- MODULE 1 -->
+  <div id="module1">
+    <div class="card">
+      <h2>module 1: types of rats</h2>
+      <p class="subtitle" style="margin-bottom:1rem;">Not all rats are created equal. Click a rat to learn more.</p>
+
+      <div class="rat-grid">
+        <div class="rat-card" id="rat-norway" onclick="selectRat('norway')">
+          <div>🐀</div>
+          <p class="rat-name">Norway rat</p>
+          <p class="rat-latin">Rattus norvegicus</p>
+        </div>
+        <div class="rat-card" id="rat-roof" onclick="selectRat('roof')">
+          <div>🐁</div>
+          <p class="rat-name">Roof rat</p>
+          <p class="rat-latin">Rattus rattus</p>
+        </div>
+        <div class="rat-card" id="rat-fancy" onclick="selectRat('fancy')">
+          <div>🐭</div>
+          <p class="rat-name">Fancy rat</p>
+          <p class="rat-latin">Pet variety</p>
+        </div>
+        <div class="rat-card" id="rat-naked" onclick="selectRat('naked')">
+          <div>🫥</div>
+          <p class="rat-name">Naked mole rat</p>
+          <p class="rat-latin">Heterocephalus glaber</p>
+        </div>
+      </div>
+
+      <div class="rat-info" id="rat-info"></div>
+    </div>
+
+    <div class="footer-bar">
+      <p>lesson complete? <button class="link-btn" onclick="showModule(2)">go to module 2 →</button></p>
+    </div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div id="module2" style="display:none;">
+    <div class="card">
+      <h2>module 2: the $6,000 rat story</h2>
+      <p class="subtitle" style="margin-bottom:1.25rem;">how the instructor built a rat business from nothing</p>
+
+      <div class="metrics">
+        <div class="metric">
+          <p class="metric-value">$6,000</p>
+          <p class="metric-label">total earned</p>
+        </div>
+        <div class="metric">
+          <p class="metric-value">47</p>
+          <p class="metric-label">cold calls made</p>
+        </div>
+        <div class="metric">
+          <p class="metric-value">😴</p>
+          <p class="metric-label">rats: sleeping</p>
+        </div>
+      </div>
+
+      <div class="story">
+        <p>it started with a single sleeping Norway rat. while the rat napped, the instructor picked up the phone and called every pest control company, research lab, and exotic pet store in the county.</p>
+        <p>the pitch was simple: <strong>"i have rats. you need rats. let's talk."</strong></p>
+        <p>by the time the rat woke up, three deals were already signed. $6,000 in 72 hours. the rat never even knew.</p>
+      </div>
+
+      <p class="steps-label">the 3-step method:</p>
+
+      <div class="step" onclick="toggleStep('s1')">
+        <p class="step-title">step 1 — find a sleeping rat</p>
+        <div class="step-body" id="s1">Any rat will do. The key is that they're asleep and cannot object to your business decisions on their behalf. Norway rats sleep 12+ hours a day. Ideal business partners.</div>
+      </div>
+      <div class="step" onclick="toggleStep('s2')">
+        <p class="step-title">step 2 — cold call everyone</p>
+        <div class="step-body" id="s2">Research labs, pet stores, film productions (rats are very cinematic), haunted houses, and eccentric millionaires. Cast a wide net. Someone always needs a rat.</div>
+      </div>
+      <div class="step" onclick="toggleStep('s3')">
+        <p class="step-title">step 3 — close before they wake up</p>
+        <div class="step-body" id="s3">"This particular rat won't be available forever" is technically true about all living things. Close the deal. Collect payment. Let the rat keep sleeping.</div>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <p>← <button class="link-btn" onclick="showModule(1)">back to module 1</button></p>
+    </div>
+  </div>
+
+  <script>
+    const ratData = {
+      norway: { name: "Norway rat", fact: "The most common urban rat. Burrowers by nature, they can grow up to 40cm long. Excellent cold-call subjects due to their deep, predictable sleep cycles." },
+      roof:   { name: "Roof rat",   fact: "Slender, agile climbers found in attics and upper floors. Their light sleeping makes them slightly harder to cold-call around, but their aerial positioning is a selling point." },
+      fancy:  { name: "Fancy rat",  fact: "Domesticated and social. The 'fancy' refers to the rat fancy (showing) community. These rats are surprisingly charming and command premium prices on the open market." },
+      naked:  { name: "Naked mole rat", fact: "Nearly blind, nearly hairless, and nearly immortal — they rarely get cancer and can live 30+ years. The instructor tried cold-calling labs about these and it got complicated." }
+    };
+
+    function selectRat(type) {
+      document.querySelectorAll('.rat-card').forEach(el => el.classList.remove('selected'));
+      document.getElementById('rat-' + type).classList.add('selected');
+      const info = document.getElementById('rat-info');
+      info.style.display = 'block';
+      info.innerHTML = '<strong>' + ratData[type].name + ':</strong> ' + ratData[type].fact;
+    }
+
+    function showModule(n) {
+      document.getElementById('module1').style.display = n === 1 ? 'block' : 'none';
+      document.getElementById('module2').style.display = n === 2 ? 'block' : 'none';
+      document.getElementById('btn-m1').className = 'tab' + (n === 1 ? ' active' : '');
+      document.getElementById('btn-m2').className = 'tab' + (n === 2 ? ' active' : '');
+    }
+
+    function toggleStep(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+
+</body>
+</html>
